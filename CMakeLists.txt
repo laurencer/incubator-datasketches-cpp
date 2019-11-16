@@ -85,7 +85,7 @@ if (WITH_PYTHON)
   add_subdirectory(python)
 endif()
 
-target_link_libraries(datasketches PUBLIC hll cpc kll fi theta)
+target_link_libraries(datasketches PUBLIC common hll cpc kll fi theta)
 
 set_target_properties(datasketches PROPERTIES
   LINKER_LANGUAGE CXX

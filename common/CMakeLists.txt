@@ -24,7 +24,19 @@ endif()
 target_include_directories(common
   INTERFACE
     include
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+    $<INSTALL_INTERFACE:$<INSTALL_PREFIX>/include>
 )
+
+set(common_HEADERS "")
+list(APPEND common_HEADERS "include/CommonUtil.hpp;include/MurmurHash3.h;include/serde.hpp")
+
+install(TARGETS common
+  EXPORT ${PROJECT_NAME}
+)
+
+install(FILES ${common_HEADERS}
+  DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/DataSketches")
 
 target_sources(common
   INTERFACE
